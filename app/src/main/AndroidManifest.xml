@@ -13,8 +13,8 @@
         android:theme="@style/Theme.SuperMarket"
         tools:targetApi="31">
         <activity
-            android:theme="@style/LoginScreenStyle"
-            android:name=".ui.LoginActivity"
+            android:name=".ui.SplashActivity"
+            android:theme="@style/SplashScreenStyle"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.BaseActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/LoginScreenStyle" />
     </application>
 
 </manifest>

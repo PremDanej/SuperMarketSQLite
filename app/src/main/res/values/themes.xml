@@ -10,10 +10,17 @@
         <item name="colorSecondaryVariant">@color/sky_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
+        <!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
+
+    <style name="SplashScreenStyle" parent="Theme.SuperMarket">
+        <item name="android:statusBarColor">@color/backColor</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@drawable/drawable_splash_screen</item>
+    </style>
+
 
     <style name="LoginScreenStyle" parent="Theme.SuperMarket">
         <item name="android:statusBarColor">@color/backColor</item>

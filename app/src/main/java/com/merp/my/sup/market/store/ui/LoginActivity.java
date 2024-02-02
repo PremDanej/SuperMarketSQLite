@@ -12,15 +12,15 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.merp.my.sup.market.store.R;
 import com.merp.my.sup.market.store.databinding.ActivityLoginBinding;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private ActivityLoginBinding binding;
-    private static final String TAG = "===========> ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +40,19 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.btnLogin.setOnClickListener(view -> {
             if (!binding.edtUserName.getText().toString().isEmpty() && !binding.edtPassword.getText().toString().isEmpty()) {
-                Log.d(TAG, " Value Got it");
+                String username = binding.edtUserName.getText().toString();
+                String password = binding.edtPassword.getText().toString();
+                preference.setString("username", username);
+                preference.setString("password", password);
             } else {
-                Log.e(TAG, " Value is NULL");
+                Toast.makeText(this, "Value can't be empty", Toast.LENGTH_SHORT).show();
             }
             binding.edtUserName.clearFocus();
             binding.edtPassword.clearFocus();
-
         });
 
 
     }
-
-    private boolean textIsEmpty(TextInputEditText editText) {
-        return editText.getText().toString().isEmpty();
-    }
-
     public static void hideKeyboardFrom(Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
