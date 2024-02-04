@@ -19,10 +19,11 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(ActivitySplashBinding.inflate(getLayoutInflater()).getRoot());
 
-        new Handler((Looper.myLooper())).postDelayed(() ->{
-            startActivity(new Intent(this, LoginActivity.class));
+        new Handler((Looper.myLooper())).postDelayed(() -> {
+            startActivity(new Intent(this,
+                    preference.getBoolean("isLogin", false) ? ProductActivity.class : LoginActivity.class));
             finish();
-        },2000L);
+        }, 2000L);
 
     }
 }

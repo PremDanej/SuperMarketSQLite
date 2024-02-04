@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="@dimen/_65sdp"
             android:layout_height="@dimen/_65sdp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_app_launcher" />
 
         <TextView
             android:layout_marginVertical="@dimen/_20sdp"
@@ -60,8 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_40sdp"
-            android:text="Login"
-            android:textColor="@color/sky_900" />
+            android:text="Login"  />
 
     </LinearLayout>
 </RelativeLayout>
