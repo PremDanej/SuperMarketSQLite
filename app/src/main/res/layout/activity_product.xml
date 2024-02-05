@@ -53,6 +53,7 @@
                 android:text="@string/app_name" />
 
             <Button
+                android:textColor="@color/sky_900"
                 android:id="@+id/btnAddProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
                     android:src="@drawable/ic_search" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
                     android:id="@+id/edtSearch"
@@ -124,8 +125,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRcv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_10sdp" />
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

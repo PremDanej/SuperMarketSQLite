@@ -23,7 +23,8 @@ public class SplashActivity extends BaseActivity {
             startActivity(new Intent(this,
                     preference.getBoolean("isLogin", false) ? ProductActivity.class : LoginActivity.class));
             finish();
-        }, 2000L);
+            overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
+        }, 1500L);
 
     }
 }

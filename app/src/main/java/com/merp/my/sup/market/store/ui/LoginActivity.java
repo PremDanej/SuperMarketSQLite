@@ -1,10 +1,14 @@
 package com.merp.my.sup.market.store.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.inputmethod.EditorInfo;
 
+import com.merp.my.sup.market.store.R;
 import com.merp.my.sup.market.store.databinding.ActivityLoginBinding;
+import com.merp.my.sup.market.store.model.Product;
+import com.merp.my.sup.market.store.utils.MyConstant;
 
 public class LoginActivity extends BaseActivity {
 
@@ -16,6 +20,7 @@ public class LoginActivity extends BaseActivity {
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        onInit();
 
         binding.edtPassword.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -27,8 +32,19 @@ public class LoginActivity extends BaseActivity {
         });
 
         binding.btnLogin.setOnClickListener(view -> loginValidate());
+    }
 
-
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void onInit() {
+        if(preference.getInt("loginFirstTime", 0) == 0) {
+            helper.insertProduct(new Product(MyConstant.NAME_1, MyConstant.CAT_1,MyConstant.PRICE_1,MyConstant.getByte(getDrawable(R.drawable.img_banana)),MyConstant.STOCK_1));
+            helper.insertProduct(new Product(MyConstant.NAME_2, MyConstant.CAT_2,MyConstant.PRICE_2,MyConstant.getByte(getDrawable(R.drawable.img_burger)),MyConstant.STOCK_2));
+            helper.insertProduct(new Product(MyConstant.NAME_3, MyConstant.CAT_3,MyConstant.PRICE_3,MyConstant.getByte(getDrawable(R.drawable.img_carrots)),MyConstant.STOCK_3));
+            helper.insertProduct(new Product(MyConstant.NAME_4, MyConstant.CAT_4,MyConstant.PRICE_4,MyConstant.getByte(getDrawable(R.drawable.img_chili)),MyConstant.STOCK_4));
+            helper.insertProduct(new Product(MyConstant.NAME_5, MyConstant.CAT_5,MyConstant.PRICE_5,MyConstant.getByte(getDrawable(R.drawable.img_grapefruit)),MyConstant.STOCK_5));
+            helper.insertProduct(new Product(MyConstant.NAME_6, MyConstant.CAT_6,MyConstant.PRICE_6,MyConstant.getByte(getDrawable(R.drawable.img_pizza)),MyConstant.STOCK_6));
+            preference.setInt("loginFirstTime", 1);
+        }
     }
 
     private void loginValidate() {
@@ -46,6 +62,7 @@ public class LoginActivity extends BaseActivity {
         }
         binding.edtUserName.clearFocus();
         binding.edtPassword.clearFocus();
+        overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
     }
 
 

@@ -11,8 +11,14 @@
         android:theme="@style/Theme.SuperMarket"
         tools:targetApi="31">
         <activity
+            android:name=".ui.AddItemActivity"
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false"
+            android:theme="@style/CommonScreenStyle" />
+        <activity
             android:name=".ui.ProductActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/CommonScreenStyle" />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
@@ -29,7 +35,7 @@
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false"
-            android:theme="@style/LoginScreenStyle"
+            android:theme="@style/CommonScreenStyle"
             android:windowSoftInputMode="adjustNothing" />
     </application>
 

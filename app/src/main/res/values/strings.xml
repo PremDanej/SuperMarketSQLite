@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SuperMarket</string>
+    <string name="lbl_update_item">Update Item</string>
+    <string name="lbl_add_item">Add Item</string>
+    <string name="lbl_update_successfully">Update Successfully</string>
+    <string name="lbl_added_successfully">Added Successfully</string>
+
+    <string-array name="categorySpinner">
+        <item>Select Category</item>
+        <item>Fruit</item>
+        <item>Vegetable</item>
+        <item>Food</item>
+        <item>DryFruit</item>
+    </string-array>
 </resources>

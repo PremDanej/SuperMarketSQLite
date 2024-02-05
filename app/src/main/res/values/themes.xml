@@ -24,7 +24,7 @@
     </style>
 
 
-    <style name="LoginScreenStyle" parent="Theme.SuperMarket">
+    <style name="CommonScreenStyle" parent="Theme.SuperMarket">
         <item name="android:statusBarColor">@color/backColor</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="backgroundColor">@color/backColor</item>
