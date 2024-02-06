@@ -35,6 +35,13 @@ public class MyConstant {
     public static final int STOCK_4 = 1;
     public static final int STOCK_5 = 1;
     public static final int STOCK_6 = 1;
+
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+    public static final String IS_LOGIN = "isLogin";
+    public static final String STORE_MARKET_PREF = "StoreMarketPref";
+    public static final String LOGIN_FIRST_TIME = "loginFirstTime";
+
     public static byte[] getByte(Drawable d) {
         Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

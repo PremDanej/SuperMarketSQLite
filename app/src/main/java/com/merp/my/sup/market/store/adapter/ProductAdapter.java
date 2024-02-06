@@ -3,7 +3,6 @@ package com.merp.my.sup.market.store.adapter;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -22,7 +21,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     private List<Product> mainList;
     private List<Product> list;
     private final ItemClickListener listener;
-    private String[] stringArray;
+    private final String[] stringArray;
 
     public ProductAdapter(ItemClickListener listener, String[] stringArray) {
         list = new ArrayList<>();
@@ -43,7 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.binding.txtPrice.setText(getPrice(item.getPrice()));
         holder.binding.imgProduct.setImageBitmap(getImageBitmap(item.getImage()));
         holder.binding.txtName.setText(item.getName());
-        holder.binding.txtCat.setText(stringArray[item.getCategory()].toString());
+        holder.binding.txtCat.setText(stringArray[item.getCategory()]);
         holder.binding.txtStock.setText(isStockAvailable(item.getIsStock()));
         holder.binding.imgEdit.setOnClickListener(view -> listener.onItemClickListener(item.getId(),"EDIT"));
         holder.binding.imgDel.setOnClickListener(view -> listener.onItemClickListener(item.getId(),"DEL"));
@@ -63,6 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void filterList(String filter) {
         if (filter == null || filter.trim().equals("")) {
             list = new ArrayList<>();

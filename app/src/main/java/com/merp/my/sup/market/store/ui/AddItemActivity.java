@@ -1,12 +1,5 @@
 package com.merp.my.sup.market.store.ui;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +7,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.window.OnBackInvokedDispatcher;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.merp.my.sup.market.store.R;
 import com.merp.my.sup.market.store.databinding.ActivityAddItemBinding;
@@ -27,6 +25,7 @@ public class AddItemActivity extends BaseActivity {
 
     private ActivityAddItemBinding binding;
     private boolean isStockAvailable = false;
+    private boolean isAllFieldCheck = false;
     private Integer categorySelectedItem = Integer.MIN_VALUE;
     private Integer itemStockAvailable = Integer.MIN_VALUE;
     private Integer isEdit = Integer.MIN_VALUE;
@@ -69,19 +68,40 @@ public class AddItemActivity extends BaseActivity {
     }
 
     private void onProductSave() {
-        String name = Objects.requireNonNull(binding.edtName.getText()).toString();
-        String price = Objects.requireNonNull(binding.edtPrice.getText()).toString();
-        categorySelectedItem = binding.catSpinner.getSelectedItemPosition();
-        if (isEdit > 0) {
-            helper.updateProduct(new Product(isEdit, name, categorySelectedItem, price, imageViewToByte(binding.imgProduct), itemStockAvailable));
-            showToast(this, getString(R.string.lbl_update_successfully));
-        } else {
-            helper.insertProduct(new Product(name, categorySelectedItem, price, imageViewToByte(binding.imgProduct), itemStockAvailable));
-            showToast(this, getString(R.string.lbl_added_successfully));
+        isAllFieldCheck = checkAllFields();
+        if(isAllFieldCheck) {
+            String name = Objects.requireNonNull(binding.edtName.getText()).toString();
+            String price = Objects.requireNonNull(binding.edtPrice.getText()).toString();
+            categorySelectedItem = binding.catSpinner.getSelectedItemPosition();
+            if (isEdit > 0) {
+                helper.updateProduct(new Product(isEdit, name, categorySelectedItem, price, imageViewToByte(binding.imgProduct), itemStockAvailable));
+                showToast(this, getString(R.string.lbl_update_successfully));
+            } else {
+                helper.insertProduct(new Product(name, categorySelectedItem, price, imageViewToByte(binding.imgProduct), itemStockAvailable));
+                showToast(this, getString(R.string.lbl_added_successfully));
+            }
+            setResult(Activity.RESULT_OK);
+            finish();
+            overridePendingTransition(R.anim.anim_left_to_right, R.anim.anim_right_to_left);
         }
-        setResult(Activity.RESULT_OK);
-        finish();
-        overridePendingTransition(R.anim.anim_left_to_right,R.anim.anim_right_to_left);
+    }
+
+    private boolean checkAllFields() {
+        if(binding.edtName.length() == 0){
+            binding.edtName.requestFocus();
+            binding.edtName.setError(getString(R.string.lbl_this_field_is_required));
+            return false;
+        }
+        if(binding.edtPrice.length() == 0){
+            binding.edtPrice.requestFocus();
+            binding.edtPrice.setError(getString(R.string.lbl_this_field_is_required));
+            return false;
+        }
+        if(binding.catSpinner.getSelectedItemPosition() == 0){
+            showToast(this, "Select category");
+            return false;
+        }
+        return true;
     }
 
     private void onImagePick() {

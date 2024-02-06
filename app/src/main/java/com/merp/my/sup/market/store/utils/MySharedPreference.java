@@ -9,7 +9,7 @@ public class MySharedPreference {
 
     public MySharedPreference(Context context) {
         if (preferences == null) {
-            preferences = context.getSharedPreferences("StoreMarketPref", Context.MODE_PRIVATE);
+            preferences = context.getSharedPreferences(MyConstant.STORE_MARKET_PREF, Context.MODE_PRIVATE);
             editor = preferences.edit();
         }
     }

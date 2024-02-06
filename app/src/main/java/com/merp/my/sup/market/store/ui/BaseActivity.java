@@ -13,20 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.merp.my.sup.market.store.R;
 import com.merp.my.sup.market.store.db.DatabaseHelper;
 import com.merp.my.sup.market.store.model.Product;
+import com.merp.my.sup.market.store.utils.MyConstant;
 import com.merp.my.sup.market.store.utils.MySharedPreference;
 
 public class BaseActivity extends AppCompatActivity {
 
     public MySharedPreference preference;
     public DatabaseHelper helper;
-    public static final String TAG = "===========> ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preference = new MySharedPreference(this);
         helper = new DatabaseHelper(this);
-
     }
 
     public void showToast(Context context, String message){
@@ -39,7 +38,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void onLogout(Context context) {
-        preference.setBoolean("isLogin", false);
+        preference.setBoolean(MyConstant.IS_LOGIN, false);
         startActivity(new Intent(context, LoginActivity.class));
         finishAffinity();
         overridePendingTransition(R.anim.anim_left_to_right,R.anim.anim_right_to_left);

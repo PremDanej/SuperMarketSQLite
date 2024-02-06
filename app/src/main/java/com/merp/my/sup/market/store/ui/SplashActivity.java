@@ -9,6 +9,7 @@ import android.os.Looper;
 
 import com.merp.my.sup.market.store.R;
 import com.merp.my.sup.market.store.databinding.ActivitySplashBinding;
+import com.merp.my.sup.market.store.utils.MyConstant;
 
 import java.util.Objects;
 
@@ -21,10 +22,10 @@ public class SplashActivity extends BaseActivity {
 
         new Handler((Looper.myLooper())).postDelayed(() -> {
             startActivity(new Intent(this,
-                    preference.getBoolean("isLogin", false) ? ProductActivity.class : LoginActivity.class));
+                    preference.getBoolean(MyConstant.IS_LOGIN, false) ? ProductActivity.class : LoginActivity.class));
             finish();
             overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
-        }, 1500L);
+        }, 1000L);
 
     }
 }

@@ -4,6 +4,22 @@
     <string name="lbl_add_item">Add Item</string>
     <string name="lbl_update_successfully">Update Successfully</string>
     <string name="lbl_added_successfully">Added Successfully</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_password">Password</string>
+    <string name="lbl_welcome_to_superstore">Welcome to SuperStore</string>
+    <string name="lbl_login">Login</string>
+    <string name="lbl_login_successful">Login Successful</string>
+    <string name="lbl_this_field_is_required">This field is required.</string>
+    <string name="lbl_title">Title</string>
+    <string name="lbl_category">Category</string>
+    <string name="lbl_price">Price</string>
+    <string name="lbl_image">Image</string>
+    <string name="lbl_in_stock">In Stock?</string>
+    <string name="lbl_back">Back</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="lbl_dashboard">Dashboard</string>
+    <string name="lbl_show_items_in_the_stock">Show Items in the Stock</string>
+    <string name="lbl_search">Search</string>
 
     <string-array name="categorySpinner">
         <item>Select Category</item>

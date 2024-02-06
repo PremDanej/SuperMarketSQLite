@@ -30,7 +30,7 @@ public class ProductActivity extends BaseActivity implements ItemClickListener {
 
     ActivityResultLauncher<Intent> startSomeActivityForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
         if (result.getResultCode() == Activity.RESULT_OK) {
-            adapter.setUpdatedList(helper.getAllProducts());
+            setStockProducts();
         }
     });
 
@@ -46,12 +46,10 @@ public class ProductActivity extends BaseActivity implements ItemClickListener {
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -83,6 +81,10 @@ public class ProductActivity extends BaseActivity implements ItemClickListener {
     private void onStockUpdate() {
         isStockAvailable = !isStockAvailable;
         binding.imgStock.setImageDrawable(AppCompatResources.getDrawable(this, isStockAvailable ? R.drawable.ic_checked : R.drawable.ic_un_check));
+        setStockProducts();
+    }
+
+    private void setStockProducts() {
         if(isStockAvailable){
             for(Product p : helper.getAllProducts()){
                 if(p.getIsStock() > 0){
